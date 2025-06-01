@@ -114,15 +114,38 @@ export default async function searchGoogleMaps(query: string): Promise<any[]> {
       const coordinates = url ? extractCoordinatesFromUrl(url) : null;
       console.log(`Extracted Coordinates: ${coordinates ? `Lat: ${coordinates.latitude}, Lng: ${coordinates.longitude}` : "Not found"}`);
 
+      // --- Ambil nomor telepon dengan deteksi pola nomor Indonesia (0, +62, (0)
+      let phone = "";
+      // 1. Coba ambil dari <a href="tel:...">
+      const telLink = parent.find('a[href^="tel:"]').attr("href");
+      if (telLink) {
+        phone = telLink.replace("tel:", "").trim();
+      } else {
+        // 2. Jika tidak ada, cari di seluruh text yang mengandung nomor telepon Indonesia
+        const allText = parent.text();
+        // Regex: +62..., 0..., atau (0... (boleh ada spasi/tanda hubung/tanda kurung)
+        const phoneRegex = /(\+62[\s\-]?\d{2,4}[\s\-]?\d{3,4}[\s\-]?\d{3,5}|0\d{2,4}[\s\-]?\d{3,4}[\s\-]?\d{3,5}|\(0\d{1,4}\)[\s\-]?\d{3,5}[\s\-]?\d{3,5})/g;
+        const matches = allText.match(phoneRegex);
+        if (matches && matches.length > 0) {
+          phone = matches[0].replace(/[\s\-\(\)]/g, ""); // Hilangkan spasi, tanda hubung, dan kurung
+        } else {
+          // 3. Jika tetap tidak ketemu, ambil string angka pertama yang panjang (minimal 8 digit)
+          const fallback = allText.match(/([0\+][0-9\-\s\(\)]{7,})/);
+          if (fallback) {
+            phone = fallback[0].replace(/[\s\-\(\)]/g, "");
+          } else {
+            phone = "";
+          }
+        }
+      }
+
       const bodyDiv: any = parent.find("div.fontBodyMedium").first();
       const children: any = bodyDiv.children();
       const lastChild: any = children.last();
       const firstOfLast: any = lastChild.children().first();
-      const lastOfLast: any = lastChild.children().last();
 
       const address = sanitizeText(firstOfLast?.text()?.split("·")?.[1]?.trim() || "");
       const category = sanitizeText(firstOfLast?.text()?.split("·")?.[0]?.trim() || "");
-      const phone = sanitizeText(lastOfLast?.text()?.split("·")?.[1]?.trim() || "");
 
       const placeId = url ? `ChI${url.split("?")[0].split("ChI")[1]}` : null;
 
