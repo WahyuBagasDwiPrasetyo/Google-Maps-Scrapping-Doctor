@@ -1,10 +1,10 @@
 ## Aplikasi Desktop Scraping Google Maps - United Farmatic Indonesia Internship Project
 
-<<<<<<< HEAD
+
 Aplikasi ini adalah proyek website yang kubuat selama magang di **United Farmatic Indonesia**. Dibuat sebagai software desktop untuk Ekstraksi Data Google Maps! Dibangun pakai **Electron, React JS, Puppeteer, sama Vite**, tool ini bisa ngumpulin data bisnis atau lokasi berdasarkan kata kunci yang kamu ketik.
 =======
 Aplikasi ini adalah proyek website selama magang di **United Farmatic Indonesia**. Dibuat sebagai software desktop untuk Ekstraksi Data Google Maps! Dibangun pakai **Electron, React JS, Puppeteer, sama Vite**, tool ini bisa ngumpulin data bisnis atau lokasi berdasarkan kata kunci yang kamu ketik.
->>>>>>> 909860c5118a0f622f12738c20778c0848abdd04
+
 
 ### Teknologi yang Digunakan Selama Development
 
@@ -14,11 +14,7 @@ Aplikasi ini adalah proyek website selama magang di **United Farmatic Indonesia*
 
 - **Puppeteer**: Library Node.js yang memberikan API untuk mengontrol Chrome/Chromium. Ini adalah mesin utama yang melakukan scraping data dari Google Maps Secara Gratis Tanpa Google API.
 
-<<<<<<< HEAD
-- **Vite**: Build tool yang super cepat untuk pengembangan frontend. Vite bikin proses development jadi lebih cepat dengan hot module replacement yang instan.
-=======
-- **Vite**: Build tool yang super cepat untuk pengembangan frontend. 
->>>>>>> 909860c5118a0f622f12738c20778c0848abdd04
+
 
 ### Fitur Utama
 
@@ -38,7 +34,6 @@ Aplikasi ini adalah proyek website selama magang di **United Farmatic Indonesia*
 Cara pasangnya gampang:
 =======
 ### Langkah Instalasi
->>>>>>> 909860c5118a0f622f12738c20778c0848abdd04
 
 1. **Clone Repository**
    ```bash
@@ -52,7 +47,7 @@ Cara pasangnya gampang:
    ```bash
    npm install
    ```
-<<<<<<< HEAD
+
 4. **Jalanin Aplikasinya**
    ```bash
    npm run dev
@@ -71,7 +66,6 @@ Cara pasangnya gampang:
    npm run dev
    ```
    
->>>>>>> 909860c5118a0f622f12738c20778c0848abdd04
 
 ### Cara Pakai
 
